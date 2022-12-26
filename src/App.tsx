@@ -1,6 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Headphones } from "./components/Headphones";
+import { Model } from "./components/Model";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
         <Canvas>
           <pointLight position={[0, 20, 10]} intensity={1.5} />
           <OrbitControls />
-          <Headphones />
+          <Model />
         </Canvas>
       </div>
     </>
