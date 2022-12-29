@@ -7,7 +7,16 @@ export default function App() {
     <>
       <div className="flex items-center justify-center h-screen">
         <Canvas>
-          <pointLight position={[0, 20, 10]} intensity={1.5} />
+          <ambientLight intensity={1} />
+          <pointLight position={[0, 0, 0]} intensity={0.5} />
+
+          <pointLight position={[5, 0, 0]} intensity={0.25} />
+          <pointLight position={[0, 5, 0]} intensity={0.25} />
+          <pointLight position={[0, 0, 5]} intensity={0.25} />
+          <pointLight position={[-5, 0, 0]} intensity={0.25} />
+          <pointLight position={[0, -5, 0]} intensity={0.25} />
+          <pointLight position={[0, 0, -5]} intensity={0.25} />
+
           <OrbitControls />
           <Model />
         </Canvas>
