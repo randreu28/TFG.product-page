@@ -1,15 +1,27 @@
 import { Canvas } from "@react-three/fiber";
 import MyScene from "./components/MyScene";
 import Navbar from "./components/Navbar";
+import ColorPicker from "./components/ColorPicker";
+import { useState } from "react";
+import VariantPicker from "./components/VariantPicker";
+
+export type Specs = {
+  color: "black" | "white" | "blue";
+  variant: "wired" | "wireless" | "wireless pro";
+};
 
 export default function App() {
+  const [specs, setSpecs] = useState<Specs>({
+    color: "black",
+    variant: "wired",
+  });
   return (
     <>
       <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[100rem] m-auto">
         <div className="h-[80vh] m-5 col-span-2">
           <Canvas className="rounded-xl">
-            <MyScene />
+            <MyScene color={specs.color} variant={specs.variant} />
           </Canvas>
         </div>
         <div className="p-5 bg-gray-800 rounded-xl m-5 flex flex-col justify-between gap-10">
@@ -26,32 +38,13 @@ export default function App() {
             <div className="space-y-2">
               <h3 className="font-bold text-xl">Color</h3>
               <div className="flex space-x-3 justify-center sm:justify-start pt-5">
-                <div className="bg-blue-600 rounded-full w-10 h-10 border-8 border-gray-700" />
-                <div className="bg-red-600 rounded-full w-10 h-10 border-8 border-gray-700" />
-                <div className="bg-green-600 rounded-full w-10 h-10 border-8 border-gray-700" />
+                <ColorPicker specs={specs} setSpecs={setSpecs} />
               </div>
             </div>
             <div className="space-y-2">
               <h3 className="font-bold text-xl">Variant</h3>
               <div className="flex flex-col gap-5 w-fit text-center sm:flex-row mx-auto sm:mx-0 pt-5">
-                <abbr
-                  title="Chargable via USB-C"
-                  className="bg-gray-700 rounded-full px-3 py-1  my-auto no-underline line-clamp-1"
-                >
-                  Wired
-                </abbr>
-                <abbr
-                  title="Up to 30 battery hours"
-                  className="bg-gray-700 rounded-full px-3 py-1  my-auto no-underline line-clamp-1"
-                >
-                  Wireless
-                </abbr>
-                <abbr
-                  title="Up to 100 battery hours"
-                  className="bg-gray-700 rounded-full px-3 py-1  my-auto no-underline line-clamp-1"
-                >
-                  Wireless pro
-                </abbr>
+                <VariantPicker specs={specs} setSpecs={setSpecs} />
               </div>
             </div>
             <p className="leading-loose text-gray-400 line-clamp-5">
@@ -62,7 +55,12 @@ export default function App() {
             </p>
           </div>
 
-          <button className="w-full rounded-xl text-center py-5 bg-gray-700">
+          <button
+            onClick={() => {
+              console.log(specs);
+            }}
+            className="w-full rounded-xl text-center py-5 bg-gray-700"
+          >
             Add to cart
           </button>
         </div>
