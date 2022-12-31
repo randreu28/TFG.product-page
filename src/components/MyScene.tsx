@@ -3,8 +3,9 @@ import { useFrame } from "@react-three/fiber";
 import { Model } from "./Model";
 import { useState } from "react";
 import { Euler } from "three";
+import { Specs } from "../App";
 
-export default function MyScene() {
+export default function MyScene({ color, variant }: Specs) {
   const zoom: number = window.innerWidth < 640 ? 6 : 4;
 
   const [modelRotation, setModelRotation] = useState<Euler>(new Euler(0, 0, 0));
