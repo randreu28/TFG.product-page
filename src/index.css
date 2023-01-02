@@ -5,6 +5,13 @@
 html {
   @apply bg-gray-900;
   @apply text-white;
+
+  background-color: #111827;
+  background-image: url("https://images.unsplash.com/photo-1590920212394-a92a59d15f7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80");
+  background-size: auto;
+  background-position-y: -74rem;
+  background-position-x: center;
+  background-repeat: repeat;
 }
 
 .line-clamp-1 {

@@ -17,20 +17,26 @@ export default function ColorPicker({ specs, setSpecs }: Props) {
     <>
       <button
         onClick={() => changeColor("black")}
-        className={`bg-black rounded-full w-10 h-10 border-8 ${
-          specs.color == "black" ? "border-gray-900" : "border-gray-700"
+        className={`bg-black rounded w-10 h-10 transition-colors duration-300 ${
+          specs.color == "black"
+            ? "border-2 border-teal-600"
+            : "border border-pink-600/30"
         }`}
       />
       <button
         onClick={() => changeColor("white")}
-        className={`bg-white rounded-full w-10 h-10 border-8 ${
-          specs.color == "white" ? "border-gray-900" : "border-gray-700"
+        className={`bg-white rounded w-10 h-10 transition-colors duration-300 ${
+          specs.color == "white"
+            ? "border-2 border-teal-600"
+            : "border border-pink-600/30"
         }`}
       />
       <button
         onClick={() => changeColor("blue")}
-        className={`bg-blue-900 rounded-full w-10 h-10 border-8 ${
-          specs.color == "blue" ? "border-gray-900" : "border-gray-700"
+        className={`bg-blue-900 rounded w-10 h-10 transition-colors duration-300 ${
+          specs.color == "blue"
+            ? "border-2 border-teal-600"
+            : "border border-pink-600/30"
         }`}
       />
     </>

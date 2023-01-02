@@ -1,11 +1,23 @@
 export default function Navbar() {
   return (
-    <nav className="flex justify-between p-5 max-w-6xl mx-auto">
-      <div className="space-x-10 hidden sm:block">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
+    <nav className="flex justify-between p-5 max-w-6xl mx-auto text-lg">
+      <div className="space-x-10 hidden sm:block font-semibold">
+        <a
+          href="#"
+          className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-teal-500 hover:to-pink-600 transition-colors duration-300"
+        >
+          Home
+        </a>
+        <a
+          href="#"
+          className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-teal-500 hover:to-pink-600 transition-colors duration-300"
+        >
+          Products
+        </a>
       </div>
-      <h1>MUSIC STORE</h1>
+      <h1 className="font-extrabold uppercase text-2xl text-transparent bg-clip-text bg-gradient-to-br from-teal-500 to-pink-600">
+        Techno Shop
+      </h1>
       <a href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"

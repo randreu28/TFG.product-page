@@ -17,8 +17,6 @@ export default function MyScene({ color, variant }: Specs) {
   });
   return (
     <>
-      <color attach="background" args={["rgb(31, 41, 55)"]} />
-
       <ambientLight intensity={1} />
       <pointLight position={[0, 0, 0]} intensity={0.5} />
       <pointLight position={[5, 0, 0]} intensity={0.25} />
