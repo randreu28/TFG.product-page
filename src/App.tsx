@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import toast, { Toaster } from "react-hot-toast";
 import ColorPicker from "./components/ColorPicker";
 import MyScene from "./components/MyScene";
 import Navbar from "./components/Navbar";
@@ -9,6 +10,7 @@ export default function App() {
   const specs = useSpecStore();
   return (
     <>
+      <Toaster position="bottom-center" />
       <Navbar />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[100rem] m-auto">
@@ -54,6 +56,15 @@ export default function App() {
 
           <button
             onClick={() => {
+              toast.success("Item added to your cart", {
+                style: {
+                  background: "transparent",
+                  borderWidth: 1,
+                  borderColor: "rgb(20 184 166)",
+                  color: "#fff",
+                },
+                iconTheme: { primary: "rgb(20 184 166)", secondary: "#000000" },
+              });
               console.log(specs);
             }}
             className="w-full rounded-xl text-center py-5 border-2 border-teal-500/40 hover:border-pink-500/40 duration-300 transition-colors uppercase font-bold text-teal-500 hover:text-pink-500"
