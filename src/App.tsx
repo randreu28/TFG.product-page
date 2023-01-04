@@ -1,20 +1,12 @@
 import { Canvas } from "@react-three/fiber";
+import ColorPicker from "./components/ColorPicker";
 import MyScene from "./components/MyScene";
 import Navbar from "./components/Navbar";
-import ColorPicker from "./components/ColorPicker";
-import { useState } from "react";
 import VariantPicker from "./components/VariantPicker";
-
-export type Specs = {
-  color: "black" | "white" | "blue";
-  variant: "wired" | "wireless" | "wireless pro";
-};
+import { useSpecStore } from "./specStore";
 
 export default function App() {
-  const [specs, setSpecs] = useState<Specs>({
-    color: "black",
-    variant: "wired",
-  });
+  const specs = useSpecStore();
   return (
     <>
       <Navbar />
@@ -23,7 +15,7 @@ export default function App() {
         <div className="h-[80vh] m-5 col-span-2 bg-gradient-to-br from-teal-500/10 to-pink-500/10 rounded-xl backdrop-filter backdrop-blur-md">
           {
             <Canvas className="rounded-xl">
-              <MyScene color={specs.color} variant={specs.variant} />
+              <MyScene />
             </Canvas>
           }
         </div>
@@ -39,13 +31,13 @@ export default function App() {
             <div className="space-y-2">
               <h3 className="font-bold text-xl">Color</h3>
               <div className="flex space-x-3 justify-center sm:justify-start pt-5">
-                <ColorPicker specs={specs} setSpecs={setSpecs} />
+                <ColorPicker />
               </div>
             </div>
             <div className="space-y-2">
               <h3 className="font-bold text-xl">Variant</h3>
               <div className="flex flex-col gap-5 w-fit text-center sm:flex-row mx-auto sm:mx-0 pt-5">
-                <VariantPicker specs={specs} setSpecs={setSpecs} />
+                <VariantPicker />
               </div>
             </div>
 

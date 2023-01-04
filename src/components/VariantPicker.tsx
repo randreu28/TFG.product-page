@@ -1,22 +1,12 @@
-import { Specs } from "../App";
+import { useSpecStore } from "../specStore";
 
-type Props = {
-  specs: Specs;
-  setSpecs: React.Dispatch<React.SetStateAction<Specs>>;
-};
-
-export default function VariantPicker({ specs, setSpecs }: Props) {
-  function changeVariant(variant: typeof specs.variant) {
-    const newVariant = { ...specs };
-    newVariant.variant = variant;
-
-    setSpecs(newVariant);
-  }
+export default function VariantPicker() {
+  const specs = useSpecStore();
   return (
     <>
       <abbr
         onClick={() => {
-          changeVariant("wired");
+          specs.setVariant("wired");
         }}
         title="Chargable via USB-C"
         className={`rounded-full px-3 py-1 my-auto no-underline line-clamp-1 hover:cursor-pointer transition-colors duration-300 border ${
@@ -27,7 +17,7 @@ export default function VariantPicker({ specs, setSpecs }: Props) {
       </abbr>
       <abbr
         onClick={() => {
-          changeVariant("wireless");
+          specs.setVariant("wireless");
         }}
         title="Up to 30 battery hours"
         className={`rounded-full px-3 py-1 my-auto no-underline line-clamp-1 hover:cursor-pointer transition-colors duration-300 border ${
@@ -40,7 +30,7 @@ export default function VariantPicker({ specs, setSpecs }: Props) {
       </abbr>
       <abbr
         onClick={() => {
-          changeVariant("wireless pro");
+          specs.setVariant("wireless pro");
         }}
         title="Up to 100 battery hours"
         className={`rounded-full px-3 py-1 my-auto no-underline line-clamp-1 hover:cursor-pointer transition-colors duration-300 border ${

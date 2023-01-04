@@ -1,22 +1,11 @@
-import { Specs } from "../App";
+import { useSpecStore } from "../specStore";
 
-type Props = {
-  specs: Specs;
-  setSpecs: React.Dispatch<React.SetStateAction<Specs>>;
-};
-
-export default function ColorPicker({ specs, setSpecs }: Props) {
-  function changeColor(color: typeof specs.color) {
-    const newColor = { ...specs };
-    newColor.color = color;
-
-    setSpecs(newColor);
-  }
-
+export default function ColorPicker() {
+  const specs = useSpecStore();
   return (
     <>
       <button
-        onClick={() => changeColor("black")}
+        onClick={() => specs.setColor("black")}
         className={`bg-black rounded w-10 h-10 transition-colors duration-300 ${
           specs.color == "black"
             ? "border-2 border-teal-600"
@@ -24,7 +13,7 @@ export default function ColorPicker({ specs, setSpecs }: Props) {
         }`}
       />
       <button
-        onClick={() => changeColor("white")}
+        onClick={() => specs.setColor("white")}
         className={`bg-white rounded w-10 h-10 transition-colors duration-300 ${
           specs.color == "white"
             ? "border-2 border-teal-600"
@@ -32,7 +21,7 @@ export default function ColorPicker({ specs, setSpecs }: Props) {
         }`}
       />
       <button
-        onClick={() => changeColor("blue")}
+        onClick={() => specs.setColor("blue")}
         className={`bg-blue-900 rounded w-10 h-10 transition-colors duration-300 ${
           specs.color == "blue"
             ? "border-2 border-teal-600"
