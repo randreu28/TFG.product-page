@@ -1,13 +1,10 @@
 import create from "zustand";
 
-type Color = "black" | "white" | "blue";
-type Variant = "wired" | "wireless" | "wireless pro";
-
 export type Specs = {
-  color: Color;
-  variant: Variant;
-  setColor: (newColor: Color) => void;
-  setVariant: (newVariant: Variant) => void;
+  color: "black" | "white" | "blue";
+  variant: "wired" | "wireless" | "wireless pro";
+  setColor: (newColor: Specs["color"]) => void;
+  setVariant: (newVariant: Specs["variant"]) => void;
 };
 
 export const useSpecStore = create<Specs>((set) => ({
