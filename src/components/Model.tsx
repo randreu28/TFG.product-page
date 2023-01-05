@@ -8,20 +8,20 @@ import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Body_1: THREE.Mesh;
-    Body_2: THREE.Mesh;
-    Connector: THREE.Mesh;
-    Cushion: THREE.Mesh;
-    Cushion_exterior: THREE.Mesh;
-    Cushion_sides: THREE.Mesh;
-    Seprator: THREE.Mesh;
+    body_1: THREE.Mesh;
+    body_2: THREE.Mesh;
+    connector: THREE.Mesh;
+    cushion: THREE.Mesh;
+    cushionExterior: THREE.Mesh;
+    cushionSides: THREE.Mesh;
+    separator: THREE.Mesh;
   };
   materials: {
-    Plastic_2: THREE.MeshStandardMaterial;
-    GlowBlue: THREE.MeshStandardMaterial;
-    Cushion: THREE.MeshStandardMaterial;
-    Plastic_1: THREE.MeshStandardMaterial;
-    Connector: THREE.MeshStandardMaterial;
+    plastic_1: THREE.MeshStandardMaterial;
+    leds: THREE.MeshStandardMaterial;
+    plastic_2: THREE.MeshStandardMaterial;
+    cushion: THREE.MeshStandardMaterial;
+    connector: THREE.MeshStandardMaterial;
   };
 };
 
@@ -29,22 +29,25 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/model.glb") as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Body_1.geometry} material={materials.Plastic_2} />
-      <mesh geometry={nodes.Body_2.geometry} material={materials.GlowBlue} />
+      <mesh geometry={nodes.body_1.geometry} material={materials.plastic_1} />
+      <mesh geometry={nodes.body_2.geometry} material={materials.leds} />
       <mesh
-        geometry={nodes.Connector.geometry}
-        material={materials.Plastic_2}
+        geometry={nodes.connector.geometry}
+        material={materials.plastic_2}
       />
-      <mesh geometry={nodes.Cushion.geometry} material={materials.Cushion} />
+      <mesh geometry={nodes.cushion.geometry} material={materials.cushion} />
       <mesh
-        geometry={nodes.Cushion_exterior.geometry}
-        material={materials.Plastic_2}
+        geometry={nodes.cushionExterior.geometry}
+        material={materials.plastic_2}
       />
       <mesh
-        geometry={nodes.Cushion_sides.geometry}
-        material={materials.Plastic_1}
+        geometry={nodes.cushionSides.geometry}
+        material={materials.plastic_1}
       />
-      <mesh geometry={nodes.Seprator.geometry} material={materials.Connector} />
+      <mesh
+        geometry={nodes.separator.geometry}
+        material={materials.connector}
+      />
     </group>
   );
 }
