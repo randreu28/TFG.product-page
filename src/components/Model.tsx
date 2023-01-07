@@ -10,6 +10,7 @@ type GLTFResult = GLTF & {
   nodes: {
     body_1: THREE.Mesh;
     body_2: THREE.Mesh;
+    body_3: THREE.Mesh;
     connector: THREE.Mesh;
     cushion: THREE.Mesh;
     cushionExterior: THREE.Mesh;
@@ -17,10 +18,13 @@ type GLTFResult = GLTF & {
     separator: THREE.Mesh;
   };
   materials: {
-    plastic_1: THREE.MeshStandardMaterial;
+    exteriorBody: THREE.MeshStandardMaterial;
     leds: THREE.MeshStandardMaterial;
-    plastic_2: THREE.MeshStandardMaterial;
-    cushion: THREE.MeshStandardMaterial;
+    interiorBody: THREE.MeshStandardMaterial;
+    smConnector: THREE.MeshStandardMaterial;
+    interiorCushion: THREE.MeshStandardMaterial;
+    exteriorCushion: THREE.MeshStandardMaterial;
+    midCushion: THREE.MeshStandardMaterial;
     connector: THREE.MeshStandardMaterial;
   };
 };
@@ -29,20 +33,30 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/model.glb") as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.body_1.geometry} material={materials.plastic_1} />
+      <mesh
+        geometry={nodes.body_1.geometry}
+        material={materials.exteriorBody}
+      />
       <mesh geometry={nodes.body_2.geometry} material={materials.leds} />
       <mesh
-        geometry={nodes.connector.geometry}
-        material={materials.plastic_2}
+        geometry={nodes.body_3.geometry}
+        material={materials.interiorBody}
       />
-      <mesh geometry={nodes.cushion.geometry} material={materials.cushion} />
+      <mesh
+        geometry={nodes.connector.geometry}
+        material={materials.smConnector}
+      />
+      <mesh
+        geometry={nodes.cushion.geometry}
+        material={materials.interiorCushion}
+      />
       <mesh
         geometry={nodes.cushionExterior.geometry}
-        material={materials.plastic_2}
+        material={materials.exteriorCushion}
       />
       <mesh
         geometry={nodes.cushionSides.geometry}
-        material={materials.plastic_1}
+        material={materials.midCushion}
       />
       <mesh
         geometry={nodes.separator.geometry}
