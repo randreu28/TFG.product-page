@@ -12,8 +12,10 @@
     "watch": "watch 'yarn model & yarn gltfjsx' ./modeling"
   },
   "dependencies": {
+    "@react-spring/web": "^9.6.1",
     "@react-three/drei": "^9.48.1",
     "@react-three/fiber": "^8.9.1",
+    "leva": "^0.9.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
