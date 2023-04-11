@@ -5,6 +5,7 @@ import MyScene from "./components/MyScene";
 import Navbar from "./components/Navbar";
 import VariantPicker from "./components/VariantPicker";
 import { useSpecStore } from "./specStore";
+import Signature from "./components/Signature";
 
 export default function App() {
   const specs = useSpecStore();
@@ -14,7 +15,7 @@ export default function App() {
       <Navbar />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[100rem] m-auto">
-        <div className="h-[80vh] m-5 col-span-2 bg-gradient-to-br from-teal-500/10 to-pink-500/10 rounded-xl backdrop-filter backdrop-blur-md">
+        <div className="h-[77vh] m-5 col-span-2 bg-gradient-to-br from-teal-500/10 to-pink-500/10 rounded-xl backdrop-filter backdrop-blur-md">
           {
             <Canvas className="rounded-xl">
               <MyScene />
@@ -73,6 +74,7 @@ export default function App() {
           </button>
         </div>
       </div>
+      <Signature />
     </>
   );
 }
